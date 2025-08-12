@@ -56,11 +56,14 @@ const Dashboard = () => {
   };
 
   const handleManageClick = (spotId) => {
-    // Navigate to spot management page
     console.log(`Navigating to spot management for: ${spotId}`);
-    // In a real application, you would use navigate or router
-    // navigate('/spot-management', { state: { spotId } });
     window.location.href = '/spot-management';
+  };
+
+  // Fixed navigation function for Add Parking button
+  const handleAddParkingClick = () => {
+    console.log('Navigating to Add Parking page');
+    window.location.href = '/add-parking';
   };
 
   return (
@@ -97,8 +100,9 @@ const Dashboard = () => {
               </h2>
               <p className="text-gray-600">View and manage all your registered parking spaces</p>
             </div>
+            {/* FIXED: Now properly navigates to add parking page */}
             <button 
-              onClick={() => console.log('Navigate to add parking page')}
+              onClick={handleAddParkingClick}
               className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full text-sm font-medium flex items-center space-x-2 transition-colors"
             >
               <Plus size={16} />

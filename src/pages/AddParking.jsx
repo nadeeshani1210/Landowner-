@@ -17,6 +17,8 @@ const AddParking = () => {
 
   const [uploadedImages, setUploadedImages] = useState([]);
 
+
+
   const vehicleOptions = ['Car', 'Bike', 'Van', 'Truck'];
 
   const handleInputChange = (e) => {
@@ -38,7 +40,6 @@ const AddParking = () => {
 
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
-    // In a real app, you'd upload these files to a server
     files.forEach(file => {
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -52,14 +53,13 @@ const AddParking = () => {
     setUploadedImages(prev => prev.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     console.log('Form submitted:', formData);
     alert('Parking spot added successfully!');
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100">      
       <main className="max-w-4xl mx-auto px-6 py-8">
         {/* Page Header */}
         <div className="mb-8">
@@ -71,13 +71,13 @@ const AddParking = () => {
           <p className="text-gray-600">Fill in the details to add a new parking space</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Left Column */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               {/* Basic Information */}
-              <div className="bg-white rounded-xl border-2 border-green-200 shadow-sm p-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              <div className="bg-white rounded-xl border-2 border-green-200 shadow-sm p-5">
+                <h2 className="text-xl font-semibold text-gray-800 mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   Basic Information
                 </h2>
 
@@ -192,10 +192,10 @@ const AddParking = () => {
             </div>
 
             {/* Right Column */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               {/* Contact Details */}
-              <div className="bg-white rounded-xl border-2 border-green-200 shadow-sm p-6 h-fit">
-                <h2 className="text-xl font-semibold text-gray-800 mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              <div className="bg-white rounded-xl border-2 border-green-200 shadow-sm p-5 h-fit">
+                <h2 className="text-xl font-semibold text-gray-800 mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   Contact Detail
                 </h2>
 
@@ -242,8 +242,8 @@ const AddParking = () => {
               </div>
 
               {/* Photo Upload */}
-              <div className="bg-white rounded-xl border-2 border-green-200 shadow-sm p-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              <div className="bg-white rounded-xl border-2 border-green-200 shadow-sm p-5">
+                <h2 className="text-xl font-semibold text-gray-800 mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   Add up to 4 photos
                 </h2>
 
@@ -286,15 +286,15 @@ const AddParking = () => {
           </div>
 
           {/* Submit Button */}
-          <div className="flex justify-center pt-6">
+          <div className="flex justify-center pt-4">
             <button
-              type="submit"
+              onClick={handleSubmit}
               className="bg-green-600 hover:bg-green-700 text-white px-12 py-3 rounded-full text-lg font-semibold transition-colors"
             >
               Post ads
             </button>
           </div>
-        </form>
+        </div>
       </main>
     </div>
   );
